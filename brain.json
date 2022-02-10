@@ -1,14 +1,18 @@
 {"intents": [
+    {"tag":"error",
+    "patterns":[""],
+    "context_set":""},
+
     {"tag": "greet",
-    "patterns": ["hello", "hey there", "good morning", "hi", "hey", "howdy"],
+    "patterns": ["hello", "hey there", "good morning","goodmorning","hi", "hey", "howdy", "good evening"],
     "context_set":""},
     
     {"tag":"convo",
-    "patterns":["how are you", "how you doing", "how was your day", "what's up", "how you been"],
+    "patterns":["how are you", "how you doing", "how was your day", "what's up", "how you been", "you good"],
     "context_set":""},
 
     {"tag":"bye",
-    "patterns":["see ya", "good bye", "bye", "chaw", "need to go", "good night", "goodnight"],
+    "patterns":["see ya", "good bye", "bye", "chaw", "need to go", "good night", "goodnight", "bye and have a good day", "bye and have a good night"],
     "context_set":""},
 
     {"tag":"work",
@@ -40,22 +44,34 @@
     "context_set":""},
     
     {"tag":"network",
-    "patterns":["do a network check", "what's my network speed", "check my ping"],
+    "patterns":["do a network check", "what's my network speed", "check my ping", "is my network working", "my internet is slow", "my internet is down", "check my connection to the web"],
     "context_set":""},
 
     {"tag":"gartitude",
-    "patterns":["thank you", "tnx", "thanks"],
+    "patterns":["thank you", "tnx", "thanks", "ok thankyou", "k thanks", "thanks for the help"],
     "context_set":""},
 
     {"tag":"about",
-    "patterns":["tell me about you", "who are you"],
+    "patterns":["tell me about you", "who are you", "describe yourself"],
     "context_set":""},
 
     {"tag":"calendar",
-    "patterns":["check my calendar", "what tasks do i have", "how busy am i"],
+    "patterns":["check my calendar", "what tasks do i have", "how busy am i", "what do i have to do today"],
     "context_set":""},
 
     {"tag":"people",
-    "patterns":["find someone", "look for someone", "find me some one", "wiki me someone"],
+    "patterns":["find someone", "look for someone", "find me some one", "wiki me someone", "search for this name"],
+    "context_set":""},
+
+    {"tag":"email",
+    "patterns":["check my emails", "open gmail", "do i have new emails", "any mail", "gmail"],
+    "context_set":""},
+
+    {"tag":"weather",
+    "patterns":["what's the wetaher", "check the temprature", "weather"],
+    "context_set":""},
+
+    {"tag":"dictionary",
+    "patterns":["meaning of a word", "i need a dictionary", "this word is confusing", "dictionary"],
     "context_set":""}
 ]}

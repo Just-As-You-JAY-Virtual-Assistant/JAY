@@ -19,7 +19,12 @@ mappings = {"greet": nervous_system.greet,
             "network":nervous_system.net,
             "gartitude":nervous_system.gratitude,
             "about":nervous_system.about,
-            "people":nervous_system.people_search
+            "people":nervous_system.people_search,
+            "calendar":nervous_system.calendar,
+            "email":nervous_system.gmail,
+            "weather":nervous_system.weather,
+            "dictionary":nervous_system.dictionary,
+            "error":nervous_system.error
             }
 
 
@@ -36,5 +41,5 @@ nervous_system.timecheck("All good to go, Good morning sir", "All good to go, Go
 
 
 while True:
-    message = input("\n||NIGUS||: ")
-    assistant.request(message)
+        message = input("\n||NIGUS||: ")
+        assistant.request(message)
