@@ -130,11 +130,11 @@ def movies():
         webbrowser.open(f"https://hdtoday.tv/filter?type=movie&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
 
 def music():
-    title = input("||-JAY-|| => input title for music: ")
+    print("||-JAY-|| => What shall i play for you sir")
+    title = input("||NIGUS||: ")
     if title.lower() == "cancel":
         pass
     else:
-        print("||-JAY-|| => What shall i play for you sir")
         pywhatkit.playonyt(title)
 
 
