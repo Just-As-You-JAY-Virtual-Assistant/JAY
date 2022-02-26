@@ -42,7 +42,5 @@ print("Warming up neural_pathways.......")
 time.sleep(1)
 nervous_system.timecheck("All good to go, Good morning sir", "All good to go, Good evening sir", "All good to go, Good evening sir")
 
-
-while True:
-        message = input("\n||NIGUS||: ")
+def requesting(message):
         assistant.request(message)
