@@ -36,10 +36,4 @@ FOR LINUX/MAC</br>
 #### Step 2: Go to the directory you just cloned
 `cd {the_directory_you_cloned_in}`</br>
 
-#### Step 3: Run the body.py file
-
-FOR WINDOWS</br>
-`$ python body.py`</br>
-
-FOR LINUX/MAC</br>
-`$ python3 body.py`</br>
+#### Step 3: Run the neural_path_way.py file
