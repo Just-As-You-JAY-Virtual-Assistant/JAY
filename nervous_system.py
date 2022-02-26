@@ -9,6 +9,7 @@ import wikipedia
 import warnings
 import random
 import json
+from body import *
 from difflib import get_close_matches
 
 
@@ -80,9 +81,7 @@ def speech_randomizer():
 
 #nervous functions to execute specific tasks
 def about():
-    print("||-JAY-|| => " + "My name is " + about_jay["name"] + 
-            " and I am " + about_jay["age"] + 
-            ", I was created to " + about_jay["use"])
+    print("||-JAY-|| => " + "My name is " + about_jay["name"] + " and I am " + about_jay["age"] + ", I was created to " + about_jay["use"])
 
 
 
