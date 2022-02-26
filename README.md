@@ -28,7 +28,7 @@ FOR LINUX/MAC</br>
 
 </br>
 
-## After you finish installing all required packages you can run the app as the following
+## Running JAY
 
 #### Step 1: Clone this repo to your local machine
 `git clone https://github.com/nigussolomon/JAY.git`</br>
