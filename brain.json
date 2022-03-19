@@ -12,7 +12,7 @@
     "context_set":""},
 
     {"tag":"bye",
-    "patterns":["see ya", "good bye", "bye", "chaw", "need to go", "good night", "goodnight", "bye and have a good day", "bye and have a good night"],
+    "patterns":["see ya", "good bye", "bye", "chaw", "need to go", "good night", "goodnight", "have a good day", "have a good night"],
     "context_set":""},
 
     {"tag":"work",
