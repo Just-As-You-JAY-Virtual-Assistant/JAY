@@ -11,10 +11,10 @@ import random
 import json
 from body import *
 from difflib import get_close_matches
-
-
 warnings.catch_warnings()
 warnings.simplefilter("ignore")
+
+
 
 #permanent nervous system data, unchangable while awake
 if int(datetime.datetime.now().year <= 2022):
@@ -50,21 +50,26 @@ jay_speech = {
 }
 
 
+
 #natural nerve impulses
+
+##JAY's speaking function
 def speaker(speak):
     eng = pyttsx3.init('espeak')
     eng.setProperty('voice', 'english+f1')
     eng.say(speak)
     eng.runAndWait()
 
+##JAY's task confirmation function
 def task_checker(message1, music_title):
-    reply_mes = input("||-JAY-|| => reply: ")
+    reply_mes = input("|:NIGUS:| => ")
     if reply_mes.lower() in ["yes", "sure", "yup", "yeaa", "yeah"]:
         pywhatkit.playonyt(music_title)
         time.sleep(5)
     else:
-        print(print("||-JAY-|| =>" + message1))
+        jay(message1)
 
+##JAY's time checking function
 def timecheck(message1, message2, message3):
     if int(times) < 12 and int(times) >=6:
         print("||-JAY-|| => " + message1)
@@ -73,88 +78,113 @@ def timecheck(message1, message2, message3):
     elif int(times) >= 18 or int(times) < 6:
         print("||-JAY-|| => " + message3)
 
+##JAY's greeting randomizer
 def speech_randomizer():
     num = random.randint(0, len(jay_speech["greet"]) - 1)
     return jay_speech["greet"][num].capitalize()
+
+##JAY's study or work session checker
+def env_check(url):
+    verify  = input("|:NIGUS:| => ")
+    if "programming" in verify:
+        os.system("code")
+        if url == "":
+            pass
+        else:
+            webbrowser.open(url)
+    elif "networking" in verify:
+        os.system("packettracer &")
+        time.sleep(1)
+
+##JAY's texting ability
+def jay(msg):
+    print("||-JAY-|| => "  + msg)
+
 
 
 
 #nervous functions to execute specific tasks
 def about():
-    print("||-JAY-|| => " + "My name is " + about_jay["name"] + " and I am " + about_jay["age"] + ", I was created to " + about_jay["use"])
+    jay("My name is " + about_jay["name"] + " and I am " + about_jay["age"] + ", I was created to " + about_jay["use"])
 
 
-
+#greeting function for intent response
 def greet():
     timecheck(speech_randomizer() + ", Good Morning", 
             speech_randomizer() + ", Good Evening", 
             speech_randomizer() + ", Good Evening")
-    
+#bye function for intent response   
 def bye():
     timecheck("Have a great day, Sir", "Have a good evening, Sir", "Have a good night, Sir")
     exit()
-
+#conversation function for intent response
 def convo():
-    print("||-JAY-|| => " + "I am fine sir, what can i do for you today?")
+    jay("I am fine sir, what can i do for you today?")
 
+#gratitude function for intent response
 def gratitude():
-    print("||-JAY-|| => " + "No problem sir, happy to help")
+    jay("No problem sir, happy to help")
 
+#joke generartor function for intent response
 def joke():
-    print(pyjokes.pyjokes.get_joke('en'))
+    jay(pyjokes.pyjokes.get_joke('en'))
 
-
-
+#study session manager function for intent response
 def study():
-    print("||-JAY-|| => " + "Ok sir, do you want some music with your study")
-    task_checker("||-JAY-|| => Opening your notebook", "chill lofi")
-    webbrowser.open("https://keep.google.com/")
-    print("||-JAY-|| => Have a nice study sir.")
+    jay("Ok sir, do you want some music with your study")
+    task_checker("Opening your notebook", "chill lofi")
+    env_check("")
+    jay("Have a nice study sir.")
 
+#work session manager function for intent response
 def work():
-    print("||-JAY-|| => Setting up workstation")
-    print("||-JAY-|| => Do you want any music while working")
-    task_checker("||-JAY-|| => Opening your Jiraboard", "night time chill lofi")
-    webbrowser.open("https://nigussolomon.atlassian.net/jira/your-work")
-    print("||-JAY-|| => Have a nice work session sir")
+    jay("Setting up workstation")
+    jay("Will you be working on programming or networking")
+    env_check("https://nigussolomon.atlassian.net/jira/your-work")
+    jay("Do you want any music while working?")
+    task_checker("||-JAY-|| => Setting up work station", "night time chill lofi")
+    jay("Have a nice work session sir")
 
-
-
+#movie manager function for intent response
 def movies():
-    print("Time to relax")
     type = input("||-JAY-|| => Movies or Shows, Sir: ")
     if type.lower() == "shows":
         webbrowser.open(f"https://hdtoday.tv/filter?type=tv&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
     elif type.lower() == "movies":
         webbrowser.open(f"https://hdtoday.tv/filter?type=movie&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
 
+#yt music manager function for intent response
 def music():
-    print("||-JAY-|| => What shall i play for you sir")
+    jay("What shall i play for you sir")
     title = input("||NIGUS||: ")
     if title.lower() == "cancel":
         pass
     else:
         pywhatkit.playonyt(title)
 
-
-
-
+#google search function for intent response
 def search():
     searchtitle = input("||-JAY-|| => What do you want to search for: ")
     if searchtitle.lower() == "cancel":
         pass
     else:
-        print("||-JAY-|| => Searching...")
+        jay("Searching...")
         pywhatkit.search(searchtitle)
         search()
 
+#wiki or google search for people function for intent response
 def people_search():
+    value = 0
     name = input("||-JAY-|| => Full Name of the person your looking for: ")
-    if name == "cancel":
+    for i in ["cancel", "stop", "leave it", "leave"]:
+        if i in name:
+            value+=1
+
+    if value > 0:
         pass
     else:
         reply = input("||-JAY-|| => Do you need details: ")
-        if reply == "yes":
+        if "yes" in reply:
             pywhatkit.search(name)
             print("")
             people_search()
@@ -163,85 +193,82 @@ def people_search():
                 print(wikipedia.summary(name))
             except:
                 error = input("||-JAY-|| => Can't find the person\nDo you want to do a google search: ")
-                if error == "yes":
+                if "yes" in error:
                     pywhatkit.search(name)
                     people_search()
                 else:
                     people_search()
 
+#dictionary function for intent response
 def dictionary():
     def check():
         reply = input("||-JAY-|| => Do you want to search for another word: ")
-        if reply == "yes":
+        if "yes" in reply:
             dictionary()
         else:
             pass
     words_data = json.load(open("words.json"))
-    word = input(print("||-JAY-|| => Enter a word: "))
+    word = input("||-JAY-|| => Enter a word: ")
 
     word = word.lower()
     if word in words_data or word.title() in words_data or word.upper() in words_data:
             res = words_data[word][0]
-            print(print(f"{str(res)}\n"))
+            print(f"{str(res)}\n")
             check()
     elif len(get_close_matches(word, words_data.keys())) >0:
         similar_words_list = list(map(str, get_close_matches(word, words_data.keys())))
-        ans = input(print("||-JAY-|| => Did you mean %s instead: " % similar_words_list))
-        if ans  == 'no':
-            print("||-JAY-|| => Sorry, I don't understand you!!!!")
+        ans = input("||-JAY-|| => Did you mean %s instead: " % similar_words_list)
+        if "no" in ans:
+            jay("Sorry, I don't understand you!!!!")
             check()
         else:
-            print(f"||-JAY-|| =>{words_data[ans][0]}\n")
+            jay(words_data[ans][0] + "\n")
             check()
                 
     else:
-        print("||-JAY-|| => I can't find the word. Please double check it!!!")
+        jay("I can't find the word. Please double check it!!!")
         check()
 
-
-
+#time teller function for intent response
 def timefun():
-    print("||-JAY-|| => The time is" + time.strftime('%l:%M'))
+    jay("The time is" + time.strftime('%l:%M'))
 
+#network ping and speedtest function for intent response
 def net():
     net_mes = input("||-JAY-|| => Is it your home network sir: ")
-    if net_mes.lower() == "yes":
-        os.system("ping -c2 8.8.8.8")
+    if "yes" in net_mes.lower():
+        os.system("ping -c4 8.8.8.8")
         print("")
         os.system("speedtest --no-upload")
     else:
         ip = input("||-JAY-|| => Please input the gateway of the network your on: ")
-        os.system(f"ping -c2 {ip}")
+        os.system(f"ping -c4 {ip}")
         print("")
         os.system("speedtest --no-upload")
         
-
-
+#google calendar checker function for intent response
 def calendar():
-    print("||-JAY-|| => Here is your google calendar....")
+    jay("Here is your google calendar....")
     webbrowser.open("https://calendar.google.com/calendar")
 
+#gmail checker function for intent response
 def gmail():
     reply = input("||-JAY-|| => Personal or School account: ")
     if reply == "cancel":
         pass
     else:
-        if reply.lower() == "personal":
+        if "personal" in reply.lower():
             webbrowser.open(personal_account["email"])
             gmail()
-        elif reply.lower() == "school":
+        elif "school" in reply.lower():
             webbrowser.open(school_account["email"])
             gmail()
 
+#weather checker function for intent response
 def weather():
+    jay("Here is the weather sir")
     webbrowser.open("https://www.tomorrow.io/weather/")
 
-
-
+#error handler when the JAY isn't familiar with the request
 def error():
-    print("||-JAY-|| => Sorry sir, I couldn't understand that")
-
-
-
-
-    
+    jay("Sorry sir, I couldn't understand that, can ypu please repeat that")

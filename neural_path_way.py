@@ -32,8 +32,10 @@ mappings = {"greet": nervous_system.greet,
                 }
 
 
-#electric waves for the brain to send messages
+#directing the nervous system to the brain
 assistant = GenericAssistant('brain.json', intent_methods=mappings ,model_name="test_model")
+
+#starting to read all data in the brain training according to that data
 assistant.train_model()
 assistant.save_model()
 os.system("clear")
@@ -43,9 +45,10 @@ print("Warming up neural_pathways.......")
 time.sleep(1)
 nervous_system.timecheck("All good to go, Good morning sir", "All good to go, Good evening sir", "All good to go, Good evening sir")
 
+#starting to listen to user
 def requesting(message):
         assistant.request(message)
 
 while True:
-        mes = input("|:NIGUS:|=> ")
+        mes = input("|:NIGUS:| => ")
         requesting(mes)
