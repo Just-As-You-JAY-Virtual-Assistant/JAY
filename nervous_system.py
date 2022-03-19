@@ -1,16 +1,7 @@
 import datetime
-import pyttsx3
-import pywhatkit
-import webbrowser
-import pyjokes
 import time
 import os
-import wikipedia
 import warnings
-import random
-import json
-from body import *
-from difflib import get_close_matches
 warnings.catch_warnings()
 warnings.simplefilter("ignore")
 
@@ -51,10 +42,14 @@ jay_speech = {
 
 
 
+
+
+
 #natural nerve impulses
 
 ##JAY's speaking function
 def speaker(speak):
+    import pyttsx3
     eng = pyttsx3.init('espeak')
     eng.setProperty('voice', 'english+f1')
     eng.say(speak)
@@ -64,7 +59,7 @@ def speaker(speak):
 def task_checker(message1, music_title):
     reply_mes = input("|:NIGUS:| => ")
     if reply_mes.lower() in ["yes", "sure", "yup", "yeaa", "yeah"]:
-        pywhatkit.playonyt(music_title)
+        jayyt(music_title)
         time.sleep(5)
     else:
         jay(message1)
@@ -80,6 +75,7 @@ def timecheck(message1, message2, message3):
 
 ##JAY's greeting randomizer
 def speech_randomizer():
+    import random
     num = random.randint(0, len(jay_speech["greet"]) - 1)
     return jay_speech["greet"][num].capitalize()
 
@@ -91,7 +87,7 @@ def env_check(url):
         if url == "":
             pass
         else:
-            webbrowser.open(url)
+           openbrowser(url)
     elif "networking" in verify:
         os.system("packettracer &")
         time.sleep(1)
@@ -99,6 +95,23 @@ def env_check(url):
 ##JAY's texting ability
 def jay(msg):
     print("||-JAY-|| => "  + msg)
+
+##JAY's youtube system
+def jayyt(title):
+    import pywhatkit
+    pywhatkit.playonyt(title)
+
+##JAY's url opener
+def openbrowser(search):
+    import webbrowser
+    webbrowser.open(search)
+
+##JAY's google searcher
+def googlesearch(search):
+    import pywhatkit
+    pywhatkit.search(search)
+
+
 
 
 
@@ -110,9 +123,10 @@ def about():
 
 #greeting function for intent response
 def greet():
-    timecheck(speech_randomizer() + ", Good Morning", 
-            speech_randomizer() + ", Good Evening", 
-            speech_randomizer() + ", Good Evening")
+    greet_speech = speech_randomizer()
+    timecheck(greet_speech + ", Good Morning", 
+            greet_speech + ", Good Evening", 
+            greet_speech + ", Good Evening")
 #bye function for intent response   
 def bye():
     timecheck("Have a great day, Sir", "Have a good evening, Sir", "Have a good night, Sir")
@@ -127,6 +141,7 @@ def gratitude():
 
 #joke generartor function for intent response
 def joke():
+    import pyjokes
     jay(pyjokes.pyjokes.get_joke('en'))
 
 #study session manager function for intent response
@@ -149,9 +164,9 @@ def work():
 def movies():
     type = input("||-JAY-|| => Movies or Shows, Sir: ")
     if type.lower() == "shows":
-        webbrowser.open(f"https://hdtoday.tv/filter?type=tv&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
+        openbrowser(f"https://hdtoday.tv/filter?type=tv&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
     elif type.lower() == "movies":
-        webbrowser.open(f"https://hdtoday.tv/filter?type=movie&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
+        openbrowser(f"https://hdtoday.tv/filter?type=movie&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
 
 #yt music manager function for intent response
 def music():
@@ -160,7 +175,7 @@ def music():
     if title.lower() == "cancel":
         pass
     else:
-        pywhatkit.playonyt(title)
+        jayyt(title)
 
 #google search function for intent response
 def search():
@@ -169,7 +184,7 @@ def search():
         pass
     else:
         jay("Searching...")
-        pywhatkit.search(searchtitle)
+        googlesearch(searchtitle)
         search()
 
 #wiki or google search for people function for intent response
@@ -185,22 +200,25 @@ def people_search():
     else:
         reply = input("||-JAY-|| => Do you need details: ")
         if "yes" in reply:
-            pywhatkit.search(name)
+            googlesearch(name)
             print("")
             people_search()
         else:
             try:
+                import wikipedia
                 print(wikipedia.summary(name))
             except:
                 error = input("||-JAY-|| => Can't find the person\nDo you want to do a google search: ")
                 if "yes" in error:
-                    pywhatkit.search(name)
+                    googlesearch(name)
                     people_search()
                 else:
                     people_search()
 
 #dictionary function for intent response
 def dictionary():
+    import json
+    from difflib import get_close_matches
     def check():
         reply = input("||-JAY-|| => Do you want to search for another word: ")
         if "yes" in reply:
@@ -249,7 +267,7 @@ def net():
 #google calendar checker function for intent response
 def calendar():
     jay("Here is your google calendar....")
-    webbrowser.open("https://calendar.google.com/calendar")
+    openbrowser("https://calendar.google.com/calendar")
 
 #gmail checker function for intent response
 def gmail():
@@ -258,16 +276,16 @@ def gmail():
         pass
     else:
         if "personal" in reply.lower():
-            webbrowser.open(personal_account["email"])
+            openbrowser(personal_account["email"])
             gmail()
         elif "school" in reply.lower():
-            webbrowser.open(school_account["email"])
+            openbrowser(school_account["email"])
             gmail()
 
 #weather checker function for intent response
 def weather():
     jay("Here is the weather sir")
-    webbrowser.open("https://www.tomorrow.io/weather/")
+    openbrowser("https://www.tomorrow.io/weather/")
 
 #error handler when the JAY isn't familiar with the request
 def error():
