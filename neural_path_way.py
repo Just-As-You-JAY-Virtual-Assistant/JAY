@@ -1,11 +1,8 @@
 from neuralintents import GenericAssistant
 import os
 import nervous_system
-import time
 import nltk
-
-
-#nltk.download('omw-1.4')
+nltk.download('omw-1.4')
 
 
 
@@ -39,10 +36,6 @@ assistant = GenericAssistant('brain.json', intent_methods=mappings ,model_name="
 assistant.train_model()
 assistant.save_model()
 os.system("clear")
-print("Waking up....")
-time.sleep(1)
-print("Warming up neural_pathways.......")
-time.sleep(1)
 nervous_system.timecheck("All good to go, Good morning sir", "All good to go, Good evening sir", "All good to go, Good evening sir")
 
 #starting to listen to user

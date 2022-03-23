@@ -11,20 +11,12 @@ CLI Virtual Assistant System using neuralintents
 Before starting to use JAY you will need to install some packages</br>
 
 FOR WINDOWS</br>
-`$ pip install neuralintents`</br>
-`$ pip install wikipedia`</br>
-`$ pip install nltk`</br>
-`$ pip install pywhatkit`</br>
-`$ pip install pyjokes`</br>
+`$ pip install -r requirements.txt`</br>
 
 </br>
 
 FOR LINUX/MAC</br>
-`$ pip3 install neuralintents`</br>
-`$ pip3 install wikipedia`</br>
-`$ pip3 install nltk`</br>
-`$ pip3 install pywhatkit`</br>
-`$ pip3 install pyjokes`</br>
+`$ pip3 install -r requirements.txt`</br>
 
 </br>
 
