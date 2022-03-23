@@ -29,3 +29,9 @@ FOR LINUX/MAC</br>
 `cd {the_directory_you_cloned_in}`</br>
 
 #### Step 3: Run the neural_path_way.py file
+
+##### *WINDOWS
+python neural_path_way.py
+
+##### *Linux and MacOS
+python3 neural_path_way.py
