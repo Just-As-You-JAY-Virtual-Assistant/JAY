@@ -1,0 +1,5 @@
+neuralintents
+wikipedia
+nltk
+pywhatkit
+pyjokes

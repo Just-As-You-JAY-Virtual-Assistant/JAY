@@ -4,116 +4,7 @@ import os
 import warnings
 warnings.catch_warnings()
 warnings.simplefilter("ignore")
-
-
-
-#permanent nervous system data, unchangable while awake
-if int(datetime.datetime.now().year <= 2022):
-    age_now = "a few months"
-    if int(datetime.datetime.now().year <= 2022) and int(datetime.datetime.now().month) >= 8 <=12:
-        age_now = "almost 1 year"
-else:
-    age = int(datetime.datetime.now().year) - 2021
-    if age <= 1:
-        age_now = str(age) + " year "
-    else:
-        age_now = str(age) + " years "
-
-
-about_jay = {
-    "name":"JAY",
-    "age": f"{age_now} old",
-    "use": "assist in simple daily task automation."
-}
-
-personal_account = {
-    "email":"https://mail.google.com/mail/u/0/#inbox",
-}
-
-school_account = {
-    "email": "https://mail.google.com/mail/u/1/#inbox",
-}
-
-times = time.strftime('%H')
-
-jay_speech = {
-    "greet": ["hello there sir", "hi sir", "hey sir", "I am here sir"],
-}
-
-
-
-
-
-
-#natural nerve impulses
-
-##JAY's speaking function
-def speaker(speak):
-    import pyttsx3
-    eng = pyttsx3.init('espeak')
-    eng.setProperty('voice', 'english+f1')
-    eng.say(speak)
-    eng.runAndWait()
-
-##JAY's task confirmation function
-def task_checker(message1, music_title):
-    reply_mes = input("|:NIGUS:| => ")
-    if reply_mes.lower() in ["yes", "sure", "yup", "yeaa", "yeah"]:
-        jayyt(music_title)
-        time.sleep(5)
-    else:
-        jay(message1)
-
-##JAY's time checking function
-def timecheck(message1, message2, message3):
-    if int(times) < 12 and int(times) >=6:
-        print("||-JAY-|| => " + message1)
-    elif int(times) >= 12 and int(times) < 18:
-        print("||-JAY-|| => " + message2)
-    elif int(times) >= 18 or int(times) < 6:
-        print("||-JAY-|| => " + message3)
-
-##JAY's greeting randomizer
-def speech_randomizer():
-    import random
-    num = random.randint(0, len(jay_speech["greet"]) - 1)
-    return jay_speech["greet"][num].capitalize()
-
-##JAY's study or work session checker
-def env_check(url):
-    verify  = input("|:NIGUS:| => ")
-    if "programming" in verify:
-        os.system("code")
-        if url == "":
-            pass
-        else:
-           openbrowser(url)
-    elif "networking" in verify:
-        os.system("packettracer &")
-        time.sleep(1)
-
-##JAY's texting ability
-def jay(msg):
-    print("||-JAY-|| => "  + msg)
-
-##JAY's youtube system
-def jayyt(title):
-    import pywhatkit
-    pywhatkit.playonyt(title)
-
-##JAY's url opener
-def openbrowser(search):
-    import webbrowser
-    webbrowser.open(search)
-
-##JAY's google searcher
-def googlesearch(search):
-    import pywhatkit
-    pywhatkit.search(search)
-
-
-
-
+from static_impulses import *
 
 
 #nervous functions to execute specific tasks
@@ -146,19 +37,16 @@ def joke():
 
 #study session manager function for intent response
 def study():
-    jay("Ok sir, do you want some music with your study")
+    jay("Do you want any music while studying?")
     task_checker("Opening your notebook", "chill lofi")
-    env_check("")
-    jay("Have a nice study sir.")
+    openbrowser("https://docs.google.com/document/u/1/?tgif=d")
+    jay("Have a nice study session sir.")
 
 #work session manager function for intent response
 def work():
     jay("Setting up workstation")
     jay("Will you be working on programming or networking")
     env_check("https://nigussolomon.atlassian.net/jira/your-work")
-    jay("Do you want any music while working?")
-    task_checker("||-JAY-|| => Setting up work station", "night time chill lofi")
-    jay("Have a nice work session sir")
 
 #movie manager function for intent response
 def movies():
@@ -167,6 +55,9 @@ def movies():
         openbrowser(f"https://hdtoday.tv/filter?type=tv&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
     elif type.lower() == "movies":
         openbrowser(f"https://hdtoday.tv/filter?type=movie&quality=all&release_year={datetime.datetime.now().year}&genre=all&country=all")
+    else:
+        jay("Didn't understand that sir!")
+        movies()
 
 #yt music manager function for intent response
 def music():
@@ -285,7 +176,7 @@ def gmail():
 #weather checker function for intent response
 def weather():
     jay("Here is the weather sir")
-    openbrowser("https://www.tomorrow.io/weather/")
+    openbrowser("https://www.tomorrow.io/weather/ET/AA/Addis_Ababa/038587/")
 
 #error handler when the JAY isn't familiar with the request
 def error():
