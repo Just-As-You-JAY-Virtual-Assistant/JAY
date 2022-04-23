@@ -10,6 +10,14 @@ CLI Virtual Assistant System using neuralintents
 ## Requirements
 Before starting to use JAY you will need to install some packages</br>
 
+### First
+
+Download the requirements.txt file from this repo
+
+### Second
+
+Go to the directory where you downloaded the requirements.txt file and follow the following command:
+
 FOR WINDOWS</br>
 `$ pip install -r requirements.txt`</br>
 
@@ -31,7 +39,7 @@ FOR LINUX/MAC</br>
 #### Step 3: Run the neural_path_way.py file
 
 ##### *WINDOWS
-python neural_path_way.py
+`$ python neural_path_way.py`
 
 ##### *Linux and MacOS
-python3 neural_path_way.py
+`$ python3 neural_path_way.py`
