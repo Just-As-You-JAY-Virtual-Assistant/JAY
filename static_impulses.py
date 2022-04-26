@@ -1,6 +1,7 @@
 import datetime
 import os
 import time
+import pyttsx3
 
 if int(datetime.datetime.now().year <= 2022):
     age_now = "a few months"
@@ -47,11 +48,11 @@ def task_checker(message1, music_title):
 ##JAY's time checking function
 def timecheck(message1, message2, message3):
     if int(times) < 12 and int(times) >=6:
-        print("||-JAY-|| => " + message1)
+        jay(message1)
     elif int(times) >= 12 and int(times) < 18:
-        print("||-JAY-|| => " + message2)
+        jay(message2)
     elif int(times) >= 18 or int(times) < 6:
-        print("||-JAY-|| => " + message3)
+        jay(message3)
 
 ##JAY's greeting randomizer
 def speech_randomizer():
@@ -84,7 +85,16 @@ def env_check(url):
 
 ##JAY's texting ability
 def jay(msg):
-    print("||-JAY-|| => "  + msg)
+    print(f"||-JAY-|| => {msg}")
+    engine = pyttsx3.init()
+    rate = engine.getProperty('rate')
+    engine.setProperty('rate', 175)
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', 'english + f25')
+    volume = engine.getProperty('volume')
+    engine.setProperty('volume', volume-0.65)
+    engine.say(msg)
+    engine.runAndWait()
 
 ##JAY's youtube system
 def jayyt(title):

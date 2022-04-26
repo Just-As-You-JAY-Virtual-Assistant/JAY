@@ -18,10 +18,12 @@ def greet():
     timecheck(greet_speech + ", Good Morning", 
             greet_speech + ", Good Evening", 
             greet_speech + ", Good Evening")
+
 #bye function for intent response   
 def bye():
     timecheck("Have a great day, Sir", "Have a good evening, Sir", "Have a good night, Sir")
     exit()
+    
 #conversation function for intent response
 def convo():
     jay("I am fine sir, what can i do for you today?")
@@ -70,18 +72,21 @@ def music():
 
 #google search function for intent response
 def search():
-    searchtitle = input("||-JAY-|| => What do you want to search for: ")
+    jay("What do you want to search for, sir?")
+    searchtitle = input("||-SEARCH-|| =>  ")
     if searchtitle.lower() == "cancel":
         pass
     else:
         jay("Searching...")
+        jay("Here are the search results sir")
         googlesearch(searchtitle)
         search()
 
 #wiki or google search for people function for intent response
 def people_search():
     value = 0
-    name = input("||-JAY-|| => Full Name of the person your looking for: ")
+    jay("Please, the full Name of the person your looking for")
+    name = input("||-NAME-|| => ")
     for i in ["cancel", "stop", "leave it", "leave"]:
         if i in name:
             value+=1
@@ -89,7 +94,8 @@ def people_search():
     if value > 0:
         pass
     else:
-        reply = input("||-JAY-|| => Do you need details: ")
+        jay("Do you need details")
+        reply = input("||-CONFIRMATION-|| => : ")
         if "yes" in reply:
             googlesearch(name)
             print("")
@@ -99,7 +105,8 @@ def people_search():
                 import wikipedia
                 print(wikipedia.summary(name))
             except:
-                error = input("||-JAY-|| => Can't find the person\nDo you want to do a google search: ")
+                jay(f"Can't find {name}, Sir, Do you want to do a google search")
+                error = input("||-CONFIRMATION-|| => ")
                 if "yes" in error:
                     googlesearch(name)
                     people_search()
@@ -111,22 +118,25 @@ def dictionary():
     import json
     from difflib import get_close_matches
     def check():
-        reply = input("||-JAY-|| => Do you want to search for another word: ")
+        jay("Do you want to search for another word, Sir?")
+        reply = input("||-CONFIRMATION-|| => ")
         if "yes" in reply:
             dictionary()
         else:
             pass
     words_data = json.load(open("words.json"))
-    word = input("||-JAY-|| => Enter a word: ")
+    jay("Please enter a word, Sir")
+    word = input("||-SEARCH KEY-|| => ")
 
     word = word.lower()
     if word in words_data or word.title() in words_data or word.upper() in words_data:
             res = words_data[word][0]
-            print(f"{str(res)}\n")
+            jay(f"{str(res)}\n")
             check()
     elif len(get_close_matches(word, words_data.keys())) >0:
         similar_words_list = list(map(str, get_close_matches(word, words_data.keys())))
-        ans = input("||-JAY-|| => Did you mean %s instead: " % similar_words_list)
+        jay("Did you mean %s instead: " % similar_words_list)
+        ans = input("||-CONFIRMATION-|| => ")
         if "no" in ans:
             jay("Sorry, I don't understand you!!!!")
             check()
@@ -142,18 +152,45 @@ def dictionary():
 def timefun():
     jay("The time is" + time.strftime('%l:%M'))
 
-#network ping and speedtest function for intent response
+#network ping function for intent response
 def net():
-    net_mes = input("||-JAY-|| => Is it your home network sir: ")
+    jay("Is it your home network, Sir?")
+    net_mes = input("||-CONFIRMATION-|| =>  ")
     if "yes" in net_mes.lower():
-        os.system("ping -c4 8.8.8.8")
-        print("")
-        os.system("speedtest --no-upload")
+        jay("Checking local network")
+
+        net_local_res = (os.system("ping -c4 192.168.1.1"))
+        if net_local_res == 0:
+            jay("Local network is up and running")
+            jay("Pinging Google servers")
+            net_remote = (os.system("ping -c4 192.168.1.1"))
+
+            if net_remote == 0:
+                jay("Internet is up and running too sir")
+            else:
+                jay("There seems to be an Internet failure sir.")
+        else:
+            jay("There seems to be a network failure sir.")
+        
+        
+
     else:
-        ip = input("||-JAY-|| => Please input the gateway of the network your on: ")
-        os.system(f"ping -c4 {ip}")
-        print("")
-        os.system("speedtest --no-upload")
+        jay("Please input the gateway address of the network your on")
+        ip = input("||-GATEWAY-|| => ")
+        jay("Checking local network")
+
+        net_res = (os.system(f"ping -c4 {ip}"))
+        if net_res == 0:
+            jay("Local network is up and running")
+            jay("Pinging Google servers")
+            net_remote = (os.system("ping -c4 192.168.1.1"))
+
+            if net_remote == 0:
+                jay("Internet is up and running too sir")
+            else:
+                jay("There seems to be an Internet failure sir.")
+        else:
+            jay("There seems to be a network failure sir.")
         
 #google calendar checker function for intent response
 def calendar():
