@@ -2,4 +2,4 @@ neuralintents
 wikipedia
 nltk
 pywhatkit
-pyjokes
+pyttsx3
