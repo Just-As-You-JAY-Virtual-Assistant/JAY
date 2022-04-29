@@ -14,7 +14,7 @@ def about():
 
 #greeting function for intent response
 def greet():
-    greet_speech = speech_randomizer()
+    greet_speech = "Always a pleasure to see you, sir"
     timecheck(greet_speech + ", Good Morning", 
             greet_speech + ", Good Evening", 
             greet_speech + ", Good Evening")
@@ -23,7 +23,7 @@ def greet():
 def bye():
     timecheck("Have a great day, Sir", "Have a good evening, Sir", "Have a good night, Sir")
     exit()
-    
+
 #conversation function for intent response
 def convo():
     jay("I am fine sir, what can i do for you today?")
@@ -72,6 +72,16 @@ def music():
 
 #google search function for intent response
 def search():
+    def search_check():
+            confirm_search = input("||-CONFIRMATION-||")
+            if "yes" in confirm_search:
+                search()
+            elif "no" in confirm_search:
+                pass
+            else:
+                error()
+                search_check()
+
     jay("What do you want to search for, sir?")
     searchtitle = input("||-SEARCH-|| =>  ")
     if searchtitle.lower() == "cancel":
@@ -80,12 +90,56 @@ def search():
         jay("Searching...")
         jay("Here are the search results sir")
         googlesearch(searchtitle)
-        search()
+        jay("Do you want to search for something else")
+        search_check()
+
 
 #wiki or google search for people function for intent response
 def people_search():
+    def people_search_check():
+
+        def check_loop():
+            jay(f"Can't find {name}, Sir, Do you want to do a google search")
+            error = input("||-CONFIRMATION-|| => ")
+            if "yes" in error:
+                googlesearch(name)
+                people_search_recheck()
+            elif "no" in error:
+                people_search_recheck()
+            else:
+                check_loop()
+
+
+        if "yes" in reply:
+            googlesearch(name)
+            print("")
+            people_search()
+        elif "no" in reply:
+            try:
+                import wikipedia
+                print(wikipedia.summary(name))
+                people_search_recheck()
+            except:
+                check_loop()
+                
+
+        else:
+            error()
+            people_search_check()
+
+    def people_search_recheck():
+        jay("Do you need to look for someone else?")
+        recheck = input("||-CONFIRMATION-|| => : ")
+        if "no" in recheck:
+            pass
+        elif "yes" in recheck:
+            people_search()
+        else:
+            error()
+            people_search_recheck()
+
     value = 0
-    jay("Please, the full Name of the person your looking for")
+    jay("Please enter, the full Name of the person your looking for")
     name = input("||-NAME-|| => ")
     for i in ["cancel", "stop", "leave it", "leave"]:
         if i in name:
@@ -96,22 +150,11 @@ def people_search():
     else:
         jay("Do you need details")
         reply = input("||-CONFIRMATION-|| => : ")
-        if "yes" in reply:
-            googlesearch(name)
-            print("")
-            people_search()
-        else:
-            try:
-                import wikipedia
-                print(wikipedia.summary(name))
-            except:
-                jay(f"Can't find {name}, Sir, Do you want to do a google search")
-                error = input("||-CONFIRMATION-|| => ")
-                if "yes" in error:
-                    googlesearch(name)
-                    people_search()
-                else:
-                    people_search()
+        people_search_check()
+
+        
+        
+
 
 #dictionary function for intent response
 def dictionary():
@@ -217,4 +260,4 @@ def weather():
 
 #error handler when the JAY isn't familiar with the request
 def error():
-    jay("Sorry sir, I couldn't understand that, can ypu please repeat that")
+    jay("Sorry sir, I couldn't understand that, can you please repeat that")
