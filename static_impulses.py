@@ -29,10 +29,6 @@ school_account = {
     "email": "https://mail.google.com/mail/u/1/#inbox",
 }
 
-jay_speech = {
-    "greet": ["hello there sir", "hi sir", "hey sir", "I am here sir", "Always a pleasure to see you sir"],
-}
-
 times = time.strftime('%H')
 
 
@@ -83,16 +79,16 @@ def env_check(url):
     else:
         jay("Sorry sir, I couldn't understand that, can ypu please repeat that")
 
-##JAY's texting ability
+##JAY's texting and speaking ability
 def jay(msg):
     print(f"||-JAY-|| => {msg}")
-    engine = pyttsx3.init()
+    engine = pyttsx3.init('espeak')
     rate = engine.getProperty('rate')
     engine.setProperty('rate', 175)
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', 'english + f25')
+    engine.setProperty('voice', 'english+f30')
     volume = engine.getProperty('volume')
-    engine.setProperty('volume', volume-0.65)
+    engine.setProperty('volume', volume-0.15)
     engine.say(msg)
     engine.runAndWait()
 

@@ -1,8 +1,8 @@
 from neuralintents import GenericAssistant
 import os
 import nervous_system
-import nltk
-nltk.download('omw-1.4')
+#import nltk
+#nltk.download('omw-1.4')
 
 
 
