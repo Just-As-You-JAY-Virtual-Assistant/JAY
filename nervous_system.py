@@ -14,23 +14,23 @@ def about():
 
 #greeting function for intent response
 def greet():
-    greet_speech = "Always a pleasure to see you, sir"
-    timecheck(greet_speech + ", Good Morning", 
-            greet_speech + ", Good Evening", 
-            greet_speech + ", Good Evening")
+    greet_speech = "Always a pleasure to see you sir"
+    timecheck(greet_speech + " Good Morning", 
+            greet_speech + " Good Evening", 
+            greet_speech + " Good Evening")
 
 #bye function for intent response   
 def bye():
-    timecheck("Have a great day, Sir", "Have a good evening, Sir", "Have a good night, Sir")
+    timecheck("Have a great day sir", "Have a good evening sir", "Have a good night sir")
     exit()
 
 #conversation function for intent response
 def convo():
-    jay("I am fine sir, what can i do for you today?")
+    jay("I am fine sir what can i do for you today?")
 
 #gratitude function for intent response
 def gratitude():
-    jay("No problem sir, happy to help")
+    jay("No problem sir happy to help")
 
 #joke generartor function for intent response
 def joke():
@@ -82,7 +82,7 @@ def search():
                 error()
                 search_check()
 
-    jay("What do you want to search for, sir?")
+    jay("What do you want to search for sir?")
     searchtitle = input("||-SEARCH-|| =>  ")
     if searchtitle.lower() == "cancel":
         pass
@@ -99,7 +99,7 @@ def people_search():
     def people_search_check():
 
         def check_loop():
-            jay(f"Can't find {name}, Sir, Do you want to do a google search")
+            jay(f"Can't find {name} sir do you want to do a google search")
             error = input("||-CONFIRMATION-|| => ")
             if "yes" in error:
                 googlesearch(name)
@@ -117,6 +117,7 @@ def people_search():
         elif "no" in reply:
             try:
                 import wikipedia
+                jay("searching pls wait a moment sir...")
                 print(wikipedia.summary(name))
                 people_search_recheck()
             except:
@@ -139,7 +140,7 @@ def people_search():
             people_search_recheck()
 
     value = 0
-    jay("Please enter, the full Name of the person your looking for")
+    jay("Please enter the full name of the person your looking for")
     name = input("||-NAME-|| => ")
     for i in ["cancel", "stop", "leave it", "leave"]:
         if i in name:
@@ -161,14 +162,14 @@ def dictionary():
     import json
     from difflib import get_close_matches
     def check():
-        jay("Do you want to search for another word, Sir?")
+        jay("Do you want to search for another word sir?")
         reply = input("||-CONFIRMATION-|| => ")
         if "yes" in reply:
             dictionary()
         else:
             pass
     words_data = json.load(open("words.json"))
-    jay("Please enter a word, Sir")
+    jay("Please enter a word sir")
     word = input("||-SEARCH KEY-|| => ")
 
     word = word.lower()
@@ -188,12 +189,12 @@ def dictionary():
             check()
                 
     else:
-        jay("I can't find the word. Please double check it!!!")
+        jay("I can't find the word sir please double check it!!!")
         check()
 
 #time teller function for intent response
 def timefun():
-    jay("The time is" + time.strftime('%l:%M'))
+    jay("The time is " + time.strftime('%l:%M'))
 
 #network ping function for intent response
 def net():

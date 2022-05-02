@@ -1,4 +1,5 @@
 import datetime
+from distutils.log import error
 import os
 import time
 import pyttsx3
@@ -30,6 +31,9 @@ school_account = {
 }
 
 times = time.strftime('%H')
+audio = 'speech.mp3'
+language = 'en'
+sound = 'co.za'
 
 
 ##JAY's task confirmation function
@@ -50,11 +54,6 @@ def timecheck(message1, message2, message3):
     elif int(times) >= 18 or int(times) < 6:
         jay(message3)
 
-##JAY's greeting randomizer
-def speech_randomizer():
-    import random
-    num = random.randint(0, len(jay_speech["greet"]) - 1)
-    return jay_speech["greet"][num].capitalize()
 
 ##JAY's study or work session checker
 def env_check(url):
@@ -77,20 +76,19 @@ def env_check(url):
     elif "cancel" in verify:
         pass
     else:
-        jay("Sorry sir, I couldn't understand that, can ypu please repeat that")
+        error()
 
 ##JAY's texting and speaking ability
 def jay(msg):
+    from gtts import gTTS
+    from playsound import playsound
+
+    sp = gTTS(text = msg, lang='en', tld='com.au')
+    sp.save(audio)
+    playsound(audio)
+
     print(f"||-JAY-|| => {msg}")
-    engine = pyttsx3.init('espeak')
-    rate = engine.getProperty('rate')
-    engine.setProperty('rate', 175)
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', 'english+f30')
-    volume = engine.getProperty('volume')
-    engine.setProperty('volume', volume-0.15)
-    engine.say(msg)
-    engine.runAndWait()
+
 
 ##JAY's youtube system
 def jayyt(title):
