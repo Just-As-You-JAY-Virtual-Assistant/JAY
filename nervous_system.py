@@ -15,9 +15,9 @@ def about():
 #greeting function for intent response
 def greet():
     greet_speech = "Always a pleasure to see you sir"
-    timecheck(greet_speech + " Good Morning", 
-            greet_speech + " Good Evening", 
-            greet_speech + " Good Evening")
+    timecheck(greet_speech + ", Good Morning", 
+            greet_speech + ", Good Evening", 
+            greet_speech + ", Good Evening")
 
 #bye function for intent response   
 def bye():
@@ -36,6 +36,7 @@ def gratitude():
 def joke():
     import pyjokes
     jay(pyjokes.pyjokes.get_joke('en'))
+    jay("ha ha ha")
 
 #study session manager function for intent response
 def study():
@@ -216,9 +217,7 @@ def net():
         else:
             jay("There seems to be a network failure sir.")
         
-        
-
-    else:
+    elif "no" in net_mes.lower():
         jay("Please input the gateway address of the network your on")
         ip = input("||-GATEWAY-|| => ")
         jay("Checking local network")
@@ -227,7 +226,7 @@ def net():
         if net_res == 0:
             jay("Local network is up and running")
             jay("Pinging Google servers")
-            net_remote = (os.system("ping -c4 192.168.1.1"))
+            net_remote = (os.system("ping -c4 8.8.8.8"))
 
             if net_remote == 0:
                 jay("Internet is up and running too sir")
@@ -235,6 +234,9 @@ def net():
                 jay("There seems to be an Internet failure sir.")
         else:
             jay("There seems to be a network failure sir.")
+    else:
+        error()
+        net()
         
 #google calendar checker function for intent response
 def calendar():
@@ -259,6 +261,11 @@ def weather():
     jay("Here is the weather sir")
     openbrowser("https://www.tomorrow.io/weather/ET/AA/Addis_Ababa/038587/")
 
-#error handler when the JAY isn't familiar with the request
-def error():
-    jay("Sorry sir, I couldn't understand that, can you please repeat that")
+
+def secure():
+    jay("Activating vpn please wait....")
+    os.system("protonvpn-cli c -f")
+
+
+
+
