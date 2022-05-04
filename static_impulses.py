@@ -30,8 +30,6 @@ school_account = {
 
 times = time.strftime('%H')
 audio = 'speech.mp3'
-language = 'en'
-sound = 'co.za'
 
 
 ##JAY's task confirmation function
