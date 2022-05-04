@@ -73,5 +73,13 @@
 
     {"tag":"dictionary",
     "patterns":["meaning of a word", "i need a dictionary", "this word is confusing", "dictionary"],
+    "context_set":""},
+
+    {"tag":"secure",
+    "patterns":["secure network", "hide me", "safety protocol"],
+    "context_set":""},
+
+    {"tag":"angel_protocol",
+    "patterns":["angel protocol"],
     "context_set":""}
 ]}

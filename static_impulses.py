@@ -1,8 +1,6 @@
 import datetime
-from distutils.log import error
 import os
 import time
-import pyttsx3
 
 if int(datetime.datetime.now().year <= 2022):
     age_now = "a few months"
@@ -32,8 +30,6 @@ school_account = {
 
 times = time.strftime('%H')
 audio = 'speech.mp3'
-language = 'en'
-sound = 'co.za'
 
 
 ##JAY's task confirmation function
@@ -63,10 +59,10 @@ def env_check(url):
         if url == "":
             pass
         else:
-           openbrowser(url)
-           jay("Do you want any music while working?")
-           task_checker("||-JAY-|| => Setting up work station", "night time chill lofi")
-           jay("Have a nice work session sir")
+            openbrowser(url)
+            jay("Do you want any music while working?")
+            task_checker("||-JAY-|| => Setting up work station", "night time chill lofi")
+            jay("Have a nice work session sir")
     elif "networking" in verify:
         os.system("packettracer &")
         time.sleep(2)
@@ -86,7 +82,6 @@ def jay(msg):
     sp = gTTS(text = msg, lang='en', tld='com.au')
     sp.save(audio)
     playsound(audio)
-
     print(f"||-JAY-|| => {msg}")
 
 
@@ -104,3 +99,7 @@ def openbrowser(search):
 def googlesearch(search):
     import pywhatkit
     pywhatkit.search(search)
+
+#error handler when the JAY isn't familiar with the request
+def error():
+    jay("Sorry sir, I couldn't understand that, can you please repeat that")

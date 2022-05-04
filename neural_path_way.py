@@ -1,6 +1,10 @@
 from neuralintents import GenericAssistant
 import os
 import nervous_system
+import angel_protocol
+import time
+
+from static_impulses import jay
 #import nltk
 #nltk.download('omw-1.4')
 
@@ -25,7 +29,8 @@ mappings = {"greet": nervous_system.greet,
                 "email":nervous_system.gmail,
                 "weather":nervous_system.weather,
                 "dictionary":nervous_system.dictionary,
-                "error":nervous_system.error
+                "error":nervous_system.error,
+                "angel_protocol":angel_protocol.angel_protocol
                 }
 
 
@@ -36,11 +41,20 @@ assistant = GenericAssistant('brain.json', intent_methods=mappings ,model_name="
 assistant.train_model()
 assistant.save_model()
 os.system("clear")
-nervous_system.timecheck("All good to go, Good morning sir", "All good to go, Good evening sir", "All good to go, Good evening sir")
+nervous_system.timecheck("All systems are up and running, Good morning sir", "All systems are up and running, Good evening sir", "All systems are up and running, Good evening sir")
+times = str(time.strftime('%l:%M'))
+alarm = [" 5:00", " 5:05", " 5:10"]
 
 #starting to listen to user
 def requesting(message):
         assistant.request(message)
+
+def alarm():
+        for x in alarm:
+                if alarm == times:
+                        jay(f"Good Morning sir, the time is {times} and you need to wake up")
+                else:
+                        pass
 
 while True:
         mes = input("|:NIGUS:| => ")
