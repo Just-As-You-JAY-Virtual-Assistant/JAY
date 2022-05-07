@@ -15,7 +15,7 @@ else:
 
 
 about_jay = {
-    "name":"JAY",
+    "name":"negoose",
     "age": f"{age_now} old",
     "use": "assist in simple daily task automation."
 }

