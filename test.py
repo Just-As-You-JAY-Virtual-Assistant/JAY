@@ -1,11 +1,11 @@
 """ function checking and testing 
 enviroment for new or complex 
 libraries and algorithms """
-import time
+import os
 
-times = str(time.strftime('%l:%M'))
-print(times)
-if times == " 4:38":
-    print(times)
-else:
-    print("not yet")
+def fn_map(ip, subnet, filename):
+    os.system(f"sudo nmap -O -A -T4 -Pn {ip}/{subnet} >> angel_targets/{filename}.txt")
+
+
+
+    

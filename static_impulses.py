@@ -2,6 +2,7 @@ import datetime
 import os
 import time
 
+# function to check how long its been since jay has been online
 if int(datetime.datetime.now().year <= 2022):
     age_now = "a few months"
     if int(datetime.datetime.now().year <= 2022) and int(datetime.datetime.now().month) >= 8 <=12:
@@ -13,23 +14,25 @@ else:
     else:
         age_now = str(age) + " years "
 
-
+# description abaut jay
 about_jay = {
-    "name":"JAY",
+    "name":"negoose",
     "age": f"{age_now} old",
     "use": "assist in simple daily task automation."
 }
 
+# link to registered personal email in local pc
 personal_account = {
     "email":"https://mail.google.com/mail/u/0/#inbox",
 }
 
+# link to registered school(bits) email in local pc
 school_account = {
     "email": "https://mail.google.com/mail/u/1/#inbox",
 }
 
+# variable holding the current time in hours
 times = time.strftime('%H')
-audio = 'speech.mp3'
 
 
 ##JAY's task confirmation function
@@ -76,6 +79,7 @@ def env_check(url):
 
 ##JAY's texting and speaking ability
 def jay(msg):
+    audio = 'speech.mp3'
     from gtts import gTTS
     from playsound import playsound
 

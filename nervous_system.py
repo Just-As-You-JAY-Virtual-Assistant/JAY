@@ -26,7 +26,7 @@ def bye():
 
 #conversation function for intent response
 def convo():
-    jay("I am fine sir what can i do for you today?")
+    jay("I am fine, what can i do for you today?")
 
 #gratitude function for intent response
 def gratitude():
@@ -74,7 +74,7 @@ def music():
 #google search function for intent response
 def search():
     def search_check():
-            confirm_search = input("||-CONFIRMATION-||")
+            confirm_search = input("||-CONFIRMATION-||: ")
             if "yes" in confirm_search:
                 search()
             elif "no" in confirm_search:
@@ -261,7 +261,7 @@ def weather():
     jay("Here is the weather sir")
     openbrowser("https://www.tomorrow.io/weather/ET/AA/Addis_Ababa/038587/")
 
-
+#vpn connection function for intent response
 def secure():
     jay("Activating vpn please wait....")
     os.system("protonvpn-cli c -f")
