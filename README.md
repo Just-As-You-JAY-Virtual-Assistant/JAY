@@ -43,3 +43,6 @@ FOR LINUX/MAC</br>
 
 ##### *Linux and MacOS
 `$ python3 neural_path_way.py`
+
+>JAY HAS BEEN UPDATED TO A NEW REPOSITORY YOU CAN FIND THE NEW REPOSITORY THROUGH THE LINK BELOW
+>https://github.com/nigussolomon/JAY-2.0.git
