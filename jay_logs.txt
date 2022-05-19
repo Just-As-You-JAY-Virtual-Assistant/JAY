@@ -1,0 +1,54 @@
+May 10, 9:22 AM (log started)
+
+Trying to improve the secure connection and the sniffing function by running multiple scenarios 
+and removed the automation of wirshark launch to reduce terminal overlapping between ettercap and 
+wireshark makes it easier to exit out of the function hopefully i will find a method to simplify 
+the process of launching ettercap because it launches but its droping packets instead of 
+retransmitting them so more reading on ettercap is needed to continue and also jay is 
+gonna start learning emphaty and i am gonna run multiple simulations to see how he 
+reacts to different emotional dialogues will be back with the results soon.
+
+## log result 50% success rate has been achieved on this run
+
+
+May 17, 12:48 PM (log started)
+
+So i was thinking how to create linked neural networks like how to create a neural network
+that can take care of the input for another neural network and so on so i figured it out the dialogues
+don't need to be taken care off manually they just need to recieve input from another neural network
+and produce output for the other neural network and so on that will allow jays response to be more
+efficient and precise his learning wont be automated but that is good cause he will only learn what
+i teach him the only downside is that he will not get smart fast he will get smart thou.
+
+I also noticed that every model needs to be trained at the begining of the program because if we use some
+other method there will be a training sequence at each function call and that will make jay so slow so i will
+trade off slow boot time for faster execution and still doing research into how to make him sound better and
+also hear and soon we will be up and running with the vision system and that will allow jay to have much better
+functions like recognizing my presence and also not executing any functions for someone else i guess much
+more security for angel protocol and also i am planning on encrypting my messages from now on and the next
+version of jay will be started in about a week with much more complexity and preplanning done.
+
+## log result testing on this version of jay will continue on but will also break down thsi version and start
+    taking out requirements abilities and create a pseudo model of the next version
+
+## version 2.0 planning will start WEDNESDAY, MAY 18, 2022 see ya then
+
+
+May 17, 4:21 PM (log started)
+
+Yessssssss, so first test for multiple intents has worked and we are ready for the planning stage next step
+is create an architecture and setup a file structure for avoiding circular import and load overflow get to
+work amigo!!!
+
+## log result test has been completed and we are ready for getting to work but still needs more testing before
+    actually applying it to JAY 2.0
+
+
+May 17, 6:36 PM (log started)
+
+Second phase testing completed and jay keeps showing promise the intents are perfectly feeding eachother and no
+circular import problem yet can't wait to start the planning soon will start on working on JAY 2.0 and plan on
+having a first release by the first month or June 17 hopefully
+
+## log result second round of test has been completed and is succesful a few more tests and planning can
+    start

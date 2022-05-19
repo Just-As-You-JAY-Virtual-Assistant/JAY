@@ -3,3 +3,4 @@ wikipedia
 nltk
 pywhatkit
 pyttsx3
+gtts

@@ -81,5 +81,9 @@
 
     {"tag":"angel_protocol",
     "patterns":["angel protocol"],
+    "context_set":""},
+
+    {"tag":"sad",
+    "patterns":["i am sad", "i am not feeling well", "it hurts", "i am tired of everything", "i need help", "i am struggling"],
     "context_set":""}
 ]}

